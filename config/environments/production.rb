@@ -46,6 +46,7 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
+
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 
@@ -83,4 +84,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Use env variable
+  config.secret_key_base = ENV["SECRET_KEY_BASE"]
 end
