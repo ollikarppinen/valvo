@@ -1,0 +1,19 @@
+$background:#3C4556;
+$foreground:#252525;
+$red:#D25252;
+$green:rgba(80, 250, 123, 1);
+$purple:rgba(189, 147, 249, 1);
+$pink:#ff79c6;
+$lightblue:rgba(139, 233, 253, 1);
+$orange:rgba(255, 184, 108, 1);
+
+body {
+  height:100%;
+  padding: 1em;
+  background-color: $background;
+}
+
+.jumbotron {
+  background-color:$foreground;
+  color:$green;
+}
