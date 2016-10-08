@@ -30,17 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'bootstrap', '~> 4.0.0.alpha4'
-gem 'sprockets-rails', :require => 'sprockets/railtie'
-
-source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.1.0'
-end
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
-end
+gem 'bootstrap-sass', '~> 3.3.6'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
