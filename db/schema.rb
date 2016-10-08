@@ -10,9 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20161008131102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "candidates", force: :cascade do |t|
+    t.integer  "vote_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vote_id"], name: "index_candidates_on_vote_id", using: :btree
+  end
+
+  create_table "scanned_votes", force: :cascade do |t|
+    t.integer  "single_vote_id"
+    t.integer  "candidate_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["candidate_id"], name: "index_scanned_votes_on_candidate_id", using: :btree
+    t.index ["single_vote_id"], name: "index_scanned_votes_on_single_vote_id", using: :btree
+  end
+
+  create_table "single_votes", force: :cascade do |t|
+    t.integer  "vote_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vote_id"], name: "index_single_votes_on_vote_id", using: :btree
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.boolean  "ended"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "candidates", "votes"
+  add_foreign_key "scanned_votes", "candidates"
+  add_foreign_key "scanned_votes", "single_votes"
+  add_foreign_key "single_votes", "votes"
 end
