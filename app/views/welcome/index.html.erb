@@ -2,7 +2,6 @@
   <h1>Valid voting</h1>
   <p>Create a vote where everyone can validate their vote.</p>
   <p>
-    <a href="/votes/new" class="btn btn-primary btn-lg">Create</a>
-    <a class="btn btn-primary btn-lg">Scan</a>
+    <%= link_to 'Create', { controller: :votes, action: :new }, class: 'btn btn-primary btn-lg' %>
   </p>
 </div>
