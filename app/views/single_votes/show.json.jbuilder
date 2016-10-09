@@ -1,1 +1,0 @@
-json.partial! "single_votes/single_vote", single_vote: @single_vote

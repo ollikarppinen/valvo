@@ -1,3 +1,5 @@
 <p id="notice"><%= notice %></p>
+<p>Candidates: <%= @vote.candidates.count %></p>
+<p>Voting forms: <%= @vote.voting_forms.count %></p>
 
 <%= link_to 'Back', votes_path %>

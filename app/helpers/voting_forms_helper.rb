@@ -1,0 +1,2 @@
+module VotingFormsHelper
+end

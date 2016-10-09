@@ -1,1 +1,0 @@
-json.array! @single_votes, partial: 'single_votes/single_vote', as: :single_vote

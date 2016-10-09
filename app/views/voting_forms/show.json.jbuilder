@@ -1,0 +1,1 @@
+json.partial! "voting_forms/voting_form", voting_form: @voting_form

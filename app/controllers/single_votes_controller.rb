@@ -1,74 +1,74 @@
-class SingleVotesController < ApplicationController
-  before_action :set_single_vote, only: [:show, :edit, :update, :destroy]
+class VotingFormController < ApplicationController
+  before_action :set_voting_form, only: [:show, :edit, :update, :destroy]
 
-  # GET /single_votes
-  # GET /single_votes.json
+  # GET /voting_forms
+  # GET /voting_forms.json
   def index
-    @single_votes = SingleVote.all
+    @voting_forms = VotingForm.all
   end
 
-  # GET /single_votes/1
-  # GET /single_votes/1.json
+  # GET /voting_forms/1
+  # GET /voting_forms/1.json
   def show
   end
 
-  # GET /single_votes/new
+  # GET /voting_forms/new
   def new
-    @single_vote = SingleVote.new
+    @voting_form = VotingForm.new
   end
 
-  # GET /single_votes/1/edit
+  # GET /voting_forms/1/edit
   def edit
   end
 
-  # POST /single_votes
-  # POST /single_votes.json
+  # POST /voting_forms
+  # POST /voting_forms.json
   def create
-    @single_vote = SingleVote.new(single_vote_params)
+    @voting_form = VotingForm.new(voting_form_params)
 
     respond_to do |format|
-      if @single_vote.save
-        format.html { redirect_to @single_vote, notice: 'Single vote was successfully created.' }
-        format.json { render :show, status: :created, location: @single_vote }
+      if @voting_form.save
+        format.html { redirect_to @voting_form, notice: 'Voting Form was successfully created.' }
+        format.json { render :show, status: :created, location: @voting_form }
       else
         format.html { render :new }
-        format.json { render json: @single_vote.errors, status: :unprocessable_entity }
+        format.json { render json: @voting_form.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /single_votes/1
-  # PATCH/PUT /single_votes/1.json
+  # PATCH/PUT /voting_forms/1
+  # PATCH/PUT /voting_forms/1.json
   def update
     respond_to do |format|
-      if @single_vote.update(single_vote_params)
-        format.html { redirect_to @single_vote, notice: 'Single vote was successfully updated.' }
-        format.json { render :show, status: :ok, location: @single_vote }
+      if @voting_form.update(voting_form_params)
+        format.html { redirect_to @voting_form, notice: 'Voting Form was successfully updated.' }
+        format.json { render :show, status: :ok, location: @voting_form }
       else
         format.html { render :edit }
-        format.json { render json: @single_vote.errors, status: :unprocessable_entity }
+        format.json { render json: @voting_form.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /single_votes/1
-  # DELETE /single_votes/1.json
+  # DELETE /voting_forms/1
+  # DELETE /voting_forms/1.json
   def destroy
-    @single_vote.destroy
+    @voting_form.destroy
     respond_to do |format|
-      format.html { redirect_to single_votes_url, notice: 'Single vote was successfully destroyed.' }
+      format.html { redirect_to voting_forms_url, notice: 'Voting Form was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_single_vote
-      @single_vote = SingleVote.find(params[:id])
+    def set_voting_form
+      @voting_form = VotingForm.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def single_vote_params
-      params.fetch(:single_vote, {})
+    def voting_form_params
+      params.fetch(:voting_form, {})
     end
 end

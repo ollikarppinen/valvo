@@ -11,7 +11,15 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :voting_form_count %><br>
+    <%= f.number_field :voting_form_count, value: 2 %>
+  </div>
+  <div class="field">
+    <%= f.label :candidate_count %><br>
+    <%= f.number_field :candidate_count, value: 2 %>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create Vote', :class => 'btn' %>
   </div>
 <% end %>

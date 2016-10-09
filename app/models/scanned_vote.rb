@@ -1,4 +1,4 @@
 class ScannedVote < ApplicationRecord
-  belongs_to :single_vote
+  belongs_to :voting_form
   belongs_to :candidate
 end
