@@ -1,1 +1,0 @@
-json.partial! "voting_decisions/voting_decision", voting_decision: @voting_decision

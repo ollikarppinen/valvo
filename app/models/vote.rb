@@ -13,6 +13,18 @@ class Vote < ApplicationRecord
 
   after_create :create_voting_forms_and_candidates
 
+  def has_started?
+    not self.voting_initiation.nil?
+  end
+
+  def has_ended?
+    not self.voting_conclusion.nil?
+  end
+
+  def is_ongoing?
+    has_started? && !has_ended?
+  end
+
   private
     def create_voting_forms_and_candidates
       self.candidate_count.times do
