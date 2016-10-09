@@ -1,0 +1,14 @@
+<span class="qr">
+  <%==
+    RQRCode::QRCode.new(
+      url,
+      :size => 7,
+      :level => :h
+      ).as_svg(
+        offset: 0,
+        color: '000',
+        shape_rendering: 'crispEdges',
+        module_size: 4
+      )
+  %>
+</span>
