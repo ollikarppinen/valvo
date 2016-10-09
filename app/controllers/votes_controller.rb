@@ -10,6 +10,12 @@ class VotesController < ApplicationController
   # GET /votes/1
   # GET /votes/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render_pdf
+      end
+    end
   end
 
   # GET /votes/new
@@ -42,5 +48,10 @@ class VotesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def vote_params
       params.require(:vote).permit(:candidate_count, :voting_form_count)
+    end
+
+    def render_pdf
+      @example_text = "some text"
+      render :pdf => "file_name", :template => 'votes/show.pdf.erb'
     end
 end
