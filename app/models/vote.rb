@@ -3,6 +3,9 @@ class Vote < ApplicationRecord
   has_many :scanned_votes, through: :voting_forms
   has_many :candidates
 
+  validates :candidate_count, presence: true
+  validates :voting_form_count, presence: true
+
   validates_numericality_of :candidate_count, on: :create, greater_than: 1
   validates_numericality_of :voting_form_count, on: :create, greater_than: 1
 
