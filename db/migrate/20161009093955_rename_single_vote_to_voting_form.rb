@@ -1,5 +1,5 @@
 class RenameVotingFormToVotingForm < ActiveRecord::Migration[5.0]
   def change
-    rename_table :single_vote, :voting_forms
+    rename_table :single_votes, :voting_forms
   end
 end
