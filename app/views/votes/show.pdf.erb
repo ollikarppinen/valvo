@@ -1,17 +1,7 @@
 <%= wicked_pdf_stylesheet_link_tag "pdf" %>
 
-<div class="document">
-  <h1>Voting flow control</h1>
-  <p><%= url_for(controller: 'votes', action: 'show', host: request.host_with_port) %></p>
-  <p>QR-code for opening vote</p>
-  <p>QR-code for closing vote</p>
-</div>
+<%= render partial: "voting_flow_control", locals: { vote: @vote } %>
 
 <% @vote.voting_forms.each do |form| %>
-  <div class="page-break">
-    <h1>Voting form</h1>
-    <p><%= form.id %></p>
-    <p><%= form.created_at %></p>
-    <p>QR-code for setting and validating vote</p>
-  </div>
+  <%= render partial: "voting_form", locals: { form: form, vote: @vote } %>
 <% end %>
