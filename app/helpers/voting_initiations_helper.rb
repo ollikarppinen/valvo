@@ -1,0 +1,2 @@
+module VotingInitiationsHelper
+end

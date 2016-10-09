@@ -1,0 +1,17 @@
+<%= form_for(voting_initiation) do |f| %>
+  <% if voting_initiation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(voting_initiation.errors.count, "error") %> prohibited this voting_initiation from being saved:</h2>
+
+      <ul>
+      <% voting_initiation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

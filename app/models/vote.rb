@@ -2,6 +2,8 @@ class Vote < ApplicationRecord
   has_many :voting_forms
   has_many :scanned_votes, through: :voting_forms
   has_many :candidates
+  has_one :voting_initiation
+  has_one :voting_conclusion
 
   validates :candidate_count, presence: true
   validates :voting_form_count, presence: true
