@@ -34,6 +34,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'rqrcode'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

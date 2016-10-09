@@ -1,7 +1,33 @@
 <div>
   <h1>Voting flow control</h1>
   <p>Start vote here:</p>
-  <p><%= url_for(controller: 'voting_initiations', vote_id: @vote.id , host: request.host_with_port) %></p>
+  <p class="qr">
+    <%==
+      RQRCode::QRCode.new(
+        url_for(controller: 'voting_initiations', vote_id: @vote.id , host: request.host_with_port),
+        :size => 10,
+        :level => :h
+        ).as_svg(
+          offset: 0,
+          color: '000',
+          shape_rendering: 'crispEdges',
+          module_size: 4
+        )
+    %>
+  </p>
   <p>End vote here:</p>
-  <p><%= url_for(controller: 'voting_conclusions', vote_id: @vote.id , host: request.host_with_port) %></p>
+  <p class="qr">
+    <%==
+      RQRCode::QRCode.new(
+        url_for(controller: 'voting_conclusions', vote_id: @vote.id , host: request.host_with_port),
+        :size => 10,
+        :level => :h
+        ).as_svg(
+          offset: 0,
+          color: '000',
+          shape_rendering: 'crispEdges',
+          module_size: 4
+        )
+    %>
+  </p>
 </div>
