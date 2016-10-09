@@ -12,9 +12,7 @@
   <tbody>
     <% @voting_forms.each do |voting_form| %>
       <tr>
-        <td><%= link_to 'Show', voting_form %></td>
-        <td><%= link_to 'Edit', edit_voting_form_path(voting_form) %></td>
-        <td><%= link_to 'Destroy', voting_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', controller: :voting_forms, action: :show, id: voting_form.id %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +20,4 @@
 
 <br>
 
-<%= link_to 'New Voting Form', new_voting_form_path %>
+<%#= link_to 'New Voting Form', new_voting_form_path %>

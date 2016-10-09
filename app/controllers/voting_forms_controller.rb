@@ -1,10 +1,11 @@
-class VotingFormController < ApplicationController
+class VotingFormsController < ApplicationController
   before_action :set_voting_form, only: [:show, :edit, :update, :destroy]
+  before_action :set_vote, only: [:index]
 
   # GET /voting_forms
   # GET /voting_forms.json
   def index
-    @voting_forms = VotingForm.all
+    @voting_forms = @vote.voting_forms
   end
 
   # GET /voting_forms/1
@@ -62,6 +63,10 @@ class VotingFormController < ApplicationController
   end
 
   private
+    def set_vote
+      @vote = Vote.find(params[:vote_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_voting_form
       @voting_form = VotingForm.find(params[:id])

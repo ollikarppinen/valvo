@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
-<p>Candidates: <%= @vote.candidates.count %></p>
-<p>Voting forms: <%= @vote.voting_forms.count %></p>
+<p>Created at <%= @vote.created_at.to_formatted_s(:short) %></p>
+<p><%= @vote.candidates.count %> candidates</p>
+<p><%= link_to "#{@vote.voting_forms.count} voting forms", [@vote, :voting_forms] %></p>
 <p><%= link_to 'PDF', { controller: :votes, action: :show, format: :pdf }%></p>
 
 <%= link_to 'Back', votes_path %>
