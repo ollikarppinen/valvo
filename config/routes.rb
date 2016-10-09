@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :voting_conclusions, only: [:index, :create]
     resources :voting_initiations, only: [:index, :create]
     resources :voting_forms, only: [:index, :show] do
-      resources :scanned_vote, only: [:index, :new, :create]
+      resources :voting_decisions, only: [:index, :create]
     end
   end
 end

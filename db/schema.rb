@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009162724) do
+ActiveRecord::Schema.define(version: 20161009182614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 20161009162724) do
     t.index ["vote_id"], name: "index_voting_conclusions_on_vote_id", using: :btree
   end
 
+  create_table "voting_decisions", force: :cascade do |t|
+    t.integer  "voting_form_id"
+    t.integer  "candidate_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["candidate_id"], name: "index_voting_decisions_on_candidate_id", using: :btree
+    t.index ["voting_form_id"], name: "index_voting_decisions_on_voting_form_id", using: :btree
+  end
+
   create_table "voting_forms", force: :cascade do |t|
     t.integer  "vote_id"
     t.datetime "created_at", null: false
@@ -64,6 +73,8 @@ ActiveRecord::Schema.define(version: 20161009162724) do
   add_foreign_key "scanned_votes", "candidates"
   add_foreign_key "scanned_votes", "voting_forms"
   add_foreign_key "voting_conclusions", "votes"
+  add_foreign_key "voting_decisions", "candidates"
+  add_foreign_key "voting_decisions", "voting_forms"
   add_foreign_key "voting_forms", "votes"
   add_foreign_key "voting_initiations", "votes"
 end

@@ -1,4 +1,4 @@
 class Candidate < ApplicationRecord
   belongs_to :vote
-  has_many :scanned_votes
+  has_many :voting_decisions
 end
