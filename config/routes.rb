@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :voting_starts, only: [:create]
   resources :voting_forms, only: [:show]
   resources :voting_decisions, only: [:create]
+
+  get '/voting_starts/:vote_id', to: 'voting_starts#create'
+  get '/voting_ends/:vote_id', to: 'voting_ends#create'
 end
