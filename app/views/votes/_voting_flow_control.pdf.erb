@@ -1,7 +1,10 @@
 <div>
   <h1>Voting flow control</h1>
-  <p>You can start and end this vote from here:</p>
+  <p>Start vote:</p>
   <%= render partial: "qr_code", locals: { url:
-      url_for(controller: 'votes', action: :show, id: @vote.id , host: request.host_with_port)} %>
+      url_for(controller: 'voting_starts', action: :create, vote_id: @vote.id, host: request.host_with_port)} %>
   </p>
+  <p>End vote:</p>
+  <%= render partial: "qr_code", locals: { url:
+      url_for(controller: 'voting_ends', action: :create, vote_id: @vote.id, host: request.host_with_port)} %>
 </div>
