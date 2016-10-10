@@ -1,11 +1,5 @@
 class VotingDecisionsController < ApplicationController
-  before_action :set_vote, only: [:index, :create]
-
-  # GET /voting_decisions
-  # GET /voting_decisions.json
-  def index
-    @voting_decisions = VotingDecision.all
-  end
+  before_action :set_vote, only: [:create]
 
   # POST /voting_decisions
   # POST /voting_decisions.json
@@ -27,10 +21,5 @@ class VotingDecisionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_vote
       @vote = Vote.find(params[:vote_id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def voting_decision_params
-      params.fetch(:voting_decision, {})
     end
 end
