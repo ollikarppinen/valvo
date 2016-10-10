@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>
-  <% if @vote.voting_start.nil? %>Voting has not been started
-  <% elsif @vote.voting_end.nil? %>Voting is ongoing
+  <% if @vote.voting_start.nil? %>Voting has not started yet
+  <% elsif @vote.voting_end.nil? %>Voting has started
   <% else %>Voting has ended
   <% end %>
 </h1>
