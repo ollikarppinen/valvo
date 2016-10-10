@@ -1,7 +1,7 @@
 <div class="voting-receipt">
   <h1>Voting receipt</h1>
   <%= render partial: "qr_code", locals: { url:
-    url_for(controller: 'voting_decisions', action: :new, voting_form_id: form.id, host: request.host_with_port)} %>
+    url_for(controller: 'voting_forms', action: :show, id: form.id, host: request.host_with_port)} %>
   <div class="circle">
     <h2 class="label">
       no.
