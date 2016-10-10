@@ -10,71 +10,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009182614) do
+ActiveRecord::Schema.define(version: 20161010202834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "candidates", force: :cascade do |t|
-    t.integer  "vote_id"
+  create_table "candidates", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "vote_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name"
     t.index ["vote_id"], name: "index_candidates_on_vote_id", using: :btree
   end
 
-  create_table "scanned_votes", force: :cascade do |t|
-    t.integer  "voting_form_id"
-    t.integer  "candidate_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["candidate_id"], name: "index_scanned_votes_on_candidate_id", using: :btree
-    t.index ["voting_form_id"], name: "index_scanned_votes_on_voting_form_id", using: :btree
-  end
-
-  create_table "votes", force: :cascade do |t|
-    t.boolean  "ended"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+  create_table "votes", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer  "voting_form_count"
     t.integer  "candidate_count"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
-  create_table "voting_conclusions", force: :cascade do |t|
-    t.integer  "vote_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["vote_id"], name: "index_voting_conclusions_on_vote_id", using: :btree
-  end
-
-  create_table "voting_decisions", force: :cascade do |t|
-    t.integer  "voting_form_id"
-    t.integer  "candidate_id"
+  create_table "voting_decisions", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "voting_form_id"
+    t.uuid     "candidate_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["candidate_id"], name: "index_voting_decisions_on_candidate_id", using: :btree
     t.index ["voting_form_id"], name: "index_voting_decisions_on_voting_form_id", using: :btree
   end
 
-  create_table "voting_forms", force: :cascade do |t|
-    t.integer  "vote_id"
+  create_table "voting_ends", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "vote_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["vote_id"], name: "index_voting_ends_on_vote_id", using: :btree
+  end
+
+  create_table "voting_forms", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "vote_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "shuffle",                 array: true
     t.index ["vote_id"], name: "index_voting_forms_on_vote_id", using: :btree
   end
 
-  create_table "voting_initiations", force: :cascade do |t|
-    t.integer  "vote_id"
+  create_table "voting_starts", force: :cascade do |t|
+    t.uuid     "vote_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["vote_id"], name: "index_voting_initiations_on_vote_id", using: :btree
+    t.index ["vote_id"], name: "index_voting_starts_on_vote_id", using: :btree
   end
 
   add_foreign_key "candidates", "votes"
-  add_foreign_key "scanned_votes", "candidates"
-  add_foreign_key "scanned_votes", "voting_forms"
-  add_foreign_key "voting_conclusions", "votes"
   add_foreign_key "voting_decisions", "candidates"
   add_foreign_key "voting_decisions", "voting_forms"
+  add_foreign_key "voting_ends", "votes"
   add_foreign_key "voting_forms", "votes"
-  add_foreign_key "voting_initiations", "votes"
+  add_foreign_key "voting_starts", "votes"
 end

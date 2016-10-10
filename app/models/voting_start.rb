@@ -1,4 +1,4 @@
-class VotingInitiation < ApplicationRecord
+class VotingStart < ApplicationRecord
   belongs_to :vote
 
   validates :vote, presence: true

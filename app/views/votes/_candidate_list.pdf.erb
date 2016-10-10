@@ -1,7 +1,6 @@
 <div class="candidate-list">
   <h1>Candidate list</h1>
-  <p>Todo: shuffle candidates</p>
-  <% vote.candidates.each do |candidate| %>
-    <p><%= candidate.id %></p>
+  <% form.shuffle.map { |s| vote.candidates.to_a[s.to_i] }.each_with_index do |candidate, i| %>
+    <p><%= "#{i + 1}. #{candidate.name}" %></p>
   <% end %>
 </div>

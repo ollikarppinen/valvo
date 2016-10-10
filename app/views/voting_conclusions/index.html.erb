@@ -1,8 +1,0 @@
-<p id="notice"><%= notice %></p>
-
-<% if @vote.voting_conclusion.nil? %>
-  <h1>Voting has not been ended</h1>
-  <%= link_to 'End vote', vote_voting_conclusions_path, method: :post, class: 'btn btn-lg btn-primary' %>
-<% else %>
-  <h1>Voting has ended</h1>
-<% end %>

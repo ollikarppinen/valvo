@@ -1,48 +1,48 @@
 require 'test_helper'
 
-class VotingConclusionsControllerTest < ActionDispatch::IntegrationTest
+class VotingEndsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @voting_conclusion = voting_conclusions(:one)
+    @voting_end = voting_ends(:one)
   end
 
   test "should get index" do
-    get voting_conclusions_url
+    get voting_ends_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_voting_conclusion_url
+    get new_voting_end_url
     assert_response :success
   end
 
-  test "should create voting_conclusion" do
-    assert_difference('VotingConclusion.count') do
-      post voting_conclusions_url, params: { voting_conclusion: {  } }
+  test "should create voting_end" do
+    assert_difference('VotingEnd.count') do
+      post voting_ends_url, params: { voting_end: {  } }
     end
 
-    assert_redirected_to voting_conclusion_url(VotingConclusion.last)
+    assert_redirected_to voting_end_url(VotingEnd.last)
   end
 
-  test "should show voting_conclusion" do
-    get voting_conclusion_url(@voting_conclusion)
+  test "should show voting_end" do
+    get voting_end_url(@voting_end)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_voting_conclusion_url(@voting_conclusion)
+    get edit_voting_end_url(@voting_end)
     assert_response :success
   end
 
-  test "should update voting_conclusion" do
-    patch voting_conclusion_url(@voting_conclusion), params: { voting_conclusion: {  } }
-    assert_redirected_to voting_conclusion_url(@voting_conclusion)
+  test "should update voting_end" do
+    patch voting_end_url(@voting_end), params: { voting_end: {  } }
+    assert_redirected_to voting_end_url(@voting_end)
   end
 
-  test "should destroy voting_conclusion" do
-    assert_difference('VotingConclusion.count', -1) do
-      delete voting_conclusion_url(@voting_conclusion)
+  test "should destroy voting_end" do
+    assert_difference('VotingEnd.count', -1) do
+      delete voting_end_url(@voting_end)
     end
 
-    assert_redirected_to voting_conclusions_url
+    assert_redirected_to voting_ends_url
   end
 end

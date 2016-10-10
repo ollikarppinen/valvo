@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <h1>
-  <% if @vote.voting_initiation.nil? %>Voting has not been started
-  <% elsif @vote.voting_conclusion.nil? %>Voting is ongoing
+  <% if @vote.voting_start.nil? %>Voting has not been started
+  <% elsif @vote.voting_end.nil? %>Voting is ongoing
   <% else %>Voting has ended
   <% end %>
 </h1>
 <p><%= @vote.created_at.to_formatted_s(:short) %></p>
 <p><%= @vote.candidates.count %> candidates</p>
-<p><%= link_to "#{@vote.voting_forms.count} voting forms", [@vote, :voting_forms] %></p>
+<p><%= "#{@vote.voting_forms.count} voting forms" %></p>
 <p><%= link_to 'PDF', { controller: :votes, action: :show, format: :pdf }%></p>
 
 <%= link_to 'Back', votes_path %>
