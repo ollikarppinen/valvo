@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: "shared/notice", locals: { notice: notice } %>
 
 <% if !@vote.has_started? %>
   <h1>Voting has not started yet</h1>

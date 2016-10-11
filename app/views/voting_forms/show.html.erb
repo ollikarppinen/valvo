@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: "shared/notice", locals: { notice: notice } %>
 
 <% if @voting_form.vote.is_ongoing? %>
   <% if @voting_form.voting_decision.nil? %>
