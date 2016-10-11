@@ -3,16 +3,16 @@
 <% if @voting_form.vote.is_ongoing? %>
   <% if @voting_form.voting_decision.nil? %>
     <h1>You can vote</h1>
-    <p>Vote for _</p>
     <%= render 'form', voting_form_id: @voting_form.id %>
   <% else %>
     <h1>You have voted</h1>
+    <p>You can view voting results here after voting has ended</p>
   <% end %>
 <% elsif @voting_form.vote.has_ended? %>
   <h1>Voting has ended</h1>
   <p>You voted for</p>
-  <%= @voting_form.voting_decision.candidate %>
-  <p>See results</p>
+  <%= @voting_form.voting_decision.candidate.name %>
+  <%= link_to 'Results', votes_path %>
 <% else %>
   <h1>Voting has not started yet</h1>
 <% end %>
