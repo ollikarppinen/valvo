@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Voting form</h1>
-
-<%= link_to 'Back', votes_path %>
+<% if @voting_form.vote.is_ongoing? %>
+  <h1>You can vote</h1>
+  <p>Vote for _</p>
+<% elsif @voting_form.vote.has_ended? %>
+  <h1>Voting has ended</h1>
+  <p>You voted for _</p>
+  <p>See results</p>
+<% else %>
+  <h1>Voting has not started yet</h1>
+<% end %>
