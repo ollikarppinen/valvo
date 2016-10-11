@@ -10,9 +10,9 @@
   <% end %>
 <% elsif @voting_form.vote.has_ended? %>
   <h1>Voting has ended</h1>
-  <p>You voted for</p>
-  <%= @voting_form.voting_decision.candidate.name %>
-  <%= link_to 'Results', votes_path %>
+  <p>You voted for:</p>
+  <p><%= @voting_form.voting_decision.candidate.name %></p>
+  <p><%= link_to 'Results', @voting_form.vote %></p>
 <% else %>
   <h1>Voting has not started yet</h1>
 <% end %>
