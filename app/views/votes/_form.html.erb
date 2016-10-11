@@ -1,25 +1,29 @@
-<%= form_for(vote) do |f| %>
-  <% if vote.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
+<%= form_for(vote, html: { class: "form-horizontal" }) do |f| %>
+  <fieldset>
+    <legend>New vote</legend>
+      <% if vote.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
 
-      <ul>
-      <% vote.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% vote.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :voting_form_count %><br>
-    <%= f.number_field :voting_form_count, value: 2 %>
-  </div>
-  <div class="field">
-    <%= f.label :candidate_count %><br>
-    <%= f.number_field :candidate_count, value: 2 %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Create Vote', :class => 'btn btn-primary btn-lg' %>
-  </div>
+      <div class="field">
+        <%= f.label :voting_form_count %><br>
+        <%= f.number_field :voting_form_count, value: 2 %>
+      </div>
+      <div class="field">
+        <%= f.label :candidate_count %><br>
+        <%= f.number_field :candidate_count, value: 2 %>
+      </div>
+      <br>
+      <div class="actions">
+        <%= f.submit 'Create Vote', :class => 'btn btn-success' %>
+      </div>
+  </fieldset>
 <% end %>

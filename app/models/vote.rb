@@ -27,6 +27,12 @@ class Vote < ApplicationRecord
     has_started? && !has_ended?
   end
 
+  def status
+    return "Ended" if self.has_ended?
+    return "Ongoing" if self.is_ongoing?
+    "Unstarted"
+  end
+
   private
     def create_voting_forms_and_candidates
       self.candidate_count.times do |i|

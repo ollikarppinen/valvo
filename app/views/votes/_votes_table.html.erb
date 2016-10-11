@@ -1,0 +1,25 @@
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Created at</th>
+      <th>Forms</th>
+      <th>Candidates</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% votes.each_with_index do |vote, i| %>
+      <tr>
+        <td><%= i + 1 %></td>
+        <td><%= link_to "Voting#{i + 1}", vote %></td>
+        <td><%= vote.status %></td>
+        <td><%= vote.created_at.to_formatted_s(:short) %></td>
+        <td><%= vote.voting_forms.count %></td>
+        <td><%= vote.candidates.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
