@@ -2,9 +2,9 @@
   <h1>Voting flow control</h1>
   <p>Start vote:</p>
   <%= render partial: "qr_code", locals: { url:
-      url_for(controller: 'votes', action: :put, vote_id: @vote.id, uuid: @vote.start_uuid,host: request.host_with_port)} %>
+      url_for(controller: 'votes', action: :update, uuid: @vote.start_uuid,host: request.host_with_port)} %>
   </p>
   <p>End vote:</p>
   <%= render partial: "qr_code", locals: { url:
-      url_for(controller: 'votes', action: :put, vote_id: @vote.id, uuid: @vote.end_uuid,host: request.host_with_port)} %>
+      url_for(controller: 'votes', action: :update, uuid: @vote.end_uuid,host: request.host_with_port)} %>
 </div>
