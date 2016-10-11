@@ -1,0 +1,5 @@
+<%= form_tag(voting_form_path(voting_form_id: voting_form_id), method: "put") do %>
+  <%= label_tag(:candidate_number, "Vote for:") %>
+  <%= number_field_tag(:candidate_number) %>
+  <%= submit_tag("Vote") %>
+<% end %>
