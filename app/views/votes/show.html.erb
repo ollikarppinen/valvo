@@ -1,17 +1,11 @@
 <%= render partial: "shared/notice", locals: { notice: notice } %>
 
-<% if !@vote.has_started? %>
-  <h1>Voting has not started yet</h1>
-<% elsif @vote.is_ongoing? %>
-  <h1>Voting is ongoing</h1>
-<% else %>
-  <h1>Voting has ended</h1>
+<legend>Voting</legend>
+<p>Status: <%= @vote.status %></p>
+<p><%= "#{@vote.voting_forms.count} forms" %></p>
+<p><%= "#{@vote.candidates.count} candidates" %></p>
+<% if @vote.has_ended? %>
   <%= render partial: "results", locals: { candidates: @vote.candidates } %>
 <% end %>
-
-<p><%= @vote.created_at.to_formatted_s(:short) %></p>
-<p><%= @vote.candidates.count %> candidates</p>
-<p><%= "#{@vote.voting_forms.count} voting forms" %></p>
-<p><%= link_to 'PDF', { controller: :votes, action: :show, format: :pdf }%></p>
 
 <%= link_to 'Back', votes_path %>
