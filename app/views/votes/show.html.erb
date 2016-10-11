@@ -1,9 +1,12 @@
 <%= render partial: "shared/notice", locals: { notice: notice } %>
 
-<legend>Voting</legend>
-<p>Status: <%= @vote.status %></p>
-<p><%= "#{@vote.voting_forms.count} forms" %></p>
-<p><%= "#{@vote.candidates.count} candidates" %></p>
+<legend>
+  Voting
+  <span class="badge badge-info"><%= @vote.status %></span>
+  <span class="badge"><%= "#{@vote.voting_forms.count} forms" %></span>
+  <span class="badge"><%= "#{@vote.candidates.count} candidates" %></span>
+</legend>
+<p><%= link_to 'PDF', { controller: :votes, action: :show, format: :pdf }%></p>
 <% if @vote.has_ended? %>
   <%= render partial: "results", locals: { candidates: @vote.candidates } %>
 <% end %>
