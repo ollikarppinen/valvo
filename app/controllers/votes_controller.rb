@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_action :set_vote, only: [:show]
+  before_action :set_vote, only: [:show, :update]
 
   # GET /votes
   # GET /votes.json
@@ -39,19 +39,26 @@ class VotesController < ApplicationController
     end
   end
 
+  def update
+    @uuid = params[:uuid]
+    if @uuid == @vote.start_uuid && !@vote.has_started?
+      VotingStart.create(vote_id: @vote.id)
+    elsif @uuid == @vote.end_uuid && !@vote.has_ended?
+      VotingEnd.create(vote_id: @vote.id)
+    end
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_vote
       @vote = Vote.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+
     def vote_params
       params.require(:vote).permit(:candidate_count, :voting_form_count)
     end
 
     def render_pdf
-      @example_text = "some text"
       render :pdf => "file_name", :template => 'votes/show.pdf.erb'
     end
 end
