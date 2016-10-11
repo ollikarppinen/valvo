@@ -1,11 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>
-  <% if @vote.voting_start.nil? %>Voting has not started yet
-  <% elsif @vote.voting_end.nil? %>Voting has started
-  <% else %>Voting has ended
-  <% end %>
-</h1>
+<% if !@vote.has_started? %>
+  <h1>Voting has not started yet</h1>
+<% elsif @vote.is_ongoing? %>
+  <h1>Voting is ongoing</h1>
+<% else %>
+  <h1>Voting has ended</h1>
+  <%= render partial: "results", locals: { candidates: @vote.candidates } %>
+<% end %>
+
 <p><%= @vote.created_at.to_formatted_s(:short) %></p>
 <p><%= @vote.candidates.count %> candidates</p>
 <p><%= "#{@vote.voting_forms.count} voting forms" %></p>

@@ -7,6 +7,7 @@ class VotingFormsController < ApplicationController
 
   # POST /voting_forms
   def update
+
     @voting_decision = VotingDecision.new
     @voting_decision.voting_form = @voting_form
     @voting_decision.candidate_number = params[:candidate_number]
