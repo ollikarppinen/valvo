@@ -13,6 +13,8 @@ class Vote < ApplicationRecord
 
   after_create :create_voting_forms_and_candidates
 
+  default_scope  { order(:created_at => :desc) }
+
   def has_started?
     not self.voting_start.nil?
   end

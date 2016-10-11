@@ -7,13 +7,11 @@ class VotingFormsController < ApplicationController
 
   # POST /voting_forms
   def update
-
     @voting_decision = VotingDecision.new
     @voting_decision.voting_form = @voting_form
-    @voting_decision.candidate_number = params[:candidate_number]
-    unshuffled_candidate_number = @voting_form.shuffle[@voting_decision.candidate_number].to_i
-    candidate = @voting_form.vote.candidates.to_a[unshuffled_candidate_number]
-    @voting_decision.candidate = candidate
+    @voting_decision.candidate_number = params[:candidate_number].to_i
+    candidate_index = @voting_form.shuffle[@voting_decision.candidate_number - 1].to_i
+    @voting_decision.candidate = @voting_form.vote.candidates.to_a[candidate_index]
 
     respond_to do |format|
       if @voting_decision.save
