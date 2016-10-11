@@ -31,7 +31,7 @@ class Vote < ApplicationRecord
     def create_voting_forms_and_candidates
       self.candidate_count.times do |i|
         @candidate = self.candidates.new
-        @candidate.name = "Candidate_#{i}"
+        @candidate.name = "Candidate_#{i + 1}"
         @candidate.save
       end
       self.voting_form_count.times do
