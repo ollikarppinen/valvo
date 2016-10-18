@@ -1,6 +1,8 @@
 class VotesController < ApplicationController
   before_action :set_vote, only: [:show, :update]
 
+  caches_action   :show
+
   # GET /votes
   # GET /votes.json
   def index

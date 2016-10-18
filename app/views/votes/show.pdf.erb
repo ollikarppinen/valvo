@@ -1,9 +1,7 @@
 <%= wicked_pdf_stylesheet_link_tag "pdf" %>
 
-<%= render partial: "voting_flow_control", locals: { vote: @vote }, cached: true %>
+<%= render partial: "voting_flow_control", locals: { vote: @vote } %>
 
 <% @vote.voting_forms.each do |form| %>
-  <% cache form do %>
-    <%= render partial: "voting_form", locals: { form: form, vote: @vote }%>
-  <% end %>
+  <%= render partial: "voting_form", locals: { form: form, vote: @vote }%>
 <% end %>

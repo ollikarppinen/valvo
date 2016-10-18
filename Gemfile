@@ -32,9 +32,14 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
+# Pdf rendering
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+
+# QR-code generating
 gem 'rqrcode'
+
+gem 'actionpack-action_caching', :git => 'https://github.com/eileencodes/actionpack-action_caching.git', :branch => "upgrade-to-rails-5"
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

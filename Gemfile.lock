@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/eileencodes/actionpack-action_caching.git
+  revision: 20c50ad5203de3e2767e727c9a1f729e78238aae
+  branch: upgrade-to-rails-5
+  specs:
+    actionpack-action_caching (2.0.0)
+      actionpack (~> 5.x)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -164,6 +172,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack-action_caching!
   bootstrap-sass (~> 3.3.6)
   byebug
   coffee-rails (~> 4.2)
