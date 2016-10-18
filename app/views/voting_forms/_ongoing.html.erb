@@ -1,0 +1,7 @@
+<% if voting_form.voting_decision.nil? %>
+  <h1>You can vote</h1>
+  <%= render 'form', voting_form_id: voting_form.id %>
+<% else %>
+  <h1>You have voted</h1>
+  <p>You can view voting results here after voting has ended</p>
+<% end %>

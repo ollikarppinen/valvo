@@ -1,6 +1,6 @@
 class Vote < ApplicationRecord
   has_many :voting_forms
-  has_many :scanned_votes, through: :voting_forms
+  has_many :voting_decisions, through: :voting_forms
   has_many :candidates
   has_one :voting_start
   has_one :voting_end
