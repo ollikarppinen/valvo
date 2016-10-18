@@ -24,7 +24,7 @@ class Vote < ApplicationRecord
   end
 
   def is_ongoing?
-    has_started? && !has_ended?
+    self.has_started? && !self.has_ended?
   end
 
   def status
