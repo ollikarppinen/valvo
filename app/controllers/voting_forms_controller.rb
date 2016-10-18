@@ -11,7 +11,7 @@ class VotingFormsController < ApplicationController
     @voting_decision = @voting_form.voting_decision ? @voting_form.voting_decision : VotingDecision.new
     @voting_decision.voting_form = @voting_form
     @voting_decision.candidate_number = params[:candidate_number].nil? ? nil : params[:candidate_number].to_i
-    if @voting_decision.candidate_number && @voting_decision.candidate_number >= 0 && @voting_decision.candidate_number < @voting_form.vote.candidates.size
+    if @voting_decision.candidate_number && @voting_decision.candidate_number > 0 && @voting_decision.candidate_number <= @voting_form.vote.candidates.size
       candidate_index = @voting_form.shuffle[@voting_decision.candidate_number - 1]
       @voting_decision.candidate = @voting_form.vote.candidates.to_a[candidate_index]
     else
