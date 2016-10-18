@@ -1,4 +1,11 @@
 <h1>Voting has ended</h1>
-<p>You voted for:</p>
-<p><%= voting_form.voting_decision.candidate.name %></p>
+<% if voting_form.voting_decision %>
+  <p>You voted</p>
+  <p>Your input was: "<%= voting_form.voting_decision.candidate_number.to_s %>"</p>
+  <% if voting_form.voting_decision.candidate %>
+    <p>You voted for: <%= voting_form.voting_decision.candidate.name %></p>
+  <% end %>
+<% else %>
+  <p>You didn't vote</p>
+<% end %>
 <p><%= link_to 'Results', voting_form.vote %></p>
