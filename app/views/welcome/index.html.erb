@@ -4,6 +4,8 @@
   <h1><span class="brand-color">Val</span>id <span class="brand-color">Vo</span>ting</h1>
   <p>Simple voting where voters can validate their votes</p>
   <p>
-    <%= link_to 'Create', { controller: :votes, action: :new }, class: 'btn btn-primary btn-lg' %>
+    <%= link_to 'Paper voting', { controller: :votes, action: :new }, class: 'btn btn-primary btn-lg' %>
+    <button type="button" class="btn btn-disabled btn-lg">Internet voting</button>
+    <button type="button" class="btn btn-disabled btn-lg">Voting machines</button>
   </p>
 </div>
