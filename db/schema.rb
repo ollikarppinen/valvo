@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011115944) do
+ActiveRecord::Schema.define(version: 20161122090703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(version: 20161011115944) do
     t.index ["vote_id"], name: "index_voting_forms_on_vote_id", using: :btree
   end
 
+  create_table "voting_receipts", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "voting_form_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["voting_form_id"], name: "index_voting_receipts_on_voting_form_id", using: :btree
+  end
+
   create_table "voting_starts", force: :cascade do |t|
     t.uuid     "vote_id",    null: false
     t.datetime "created_at", null: false
@@ -70,5 +77,6 @@ ActiveRecord::Schema.define(version: 20161011115944) do
   add_foreign_key "voting_decisions", "voting_forms"
   add_foreign_key "voting_ends", "votes"
   add_foreign_key "voting_forms", "votes"
+  add_foreign_key "voting_receipts", "voting_forms"
   add_foreign_key "voting_starts", "votes"
 end
