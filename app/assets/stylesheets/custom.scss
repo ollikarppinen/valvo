@@ -22,3 +22,11 @@ html, body {
 .brand-color {
   color: $brand-primary;
 }
+
+.jumbotron {
+  .btn {
+    width: 200px;
+    margin-bottom: 10px;
+    //margin-left: 110px;
+  }
+}

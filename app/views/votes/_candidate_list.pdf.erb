@@ -1,5 +1,5 @@
 <div class="candidate-list">
-  <h1>Candidate list</h1>
+  <h1>Candidates</h1>
   <% form.shuffle.map { |s| vote.candidates.to_a[s.to_i] }.each_with_index do |candidate, i| %>
     <p><%= "#{i + 1}. #{candidate.name}" %></p>
   <% end %>

@@ -1,10 +1,9 @@
 <div>
-  <h1>Voting flow control</h1>
-  <p>Start vote:</p>
+  <h1>Steps</h1>
+  <h2>Scan to open voting</h2>
   <%= render partial: "qr_code", locals: { url:
       url_for(controller: 'votes', action: :update, uuid: @vote.start_uuid, host: request.host_with_port)} %>
-  </p>
-  <p>End vote:</p>
+  <h2>Scan to close voting</h2>
   <%= render partial: "qr_code", locals: { url:
       url_for(controller: 'votes', action: :update, uuid: @vote.end_uuid, host: request.host_with_port)} %>
 </div>
