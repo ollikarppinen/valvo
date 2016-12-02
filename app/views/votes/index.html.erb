@@ -2,4 +2,6 @@
 <legend>Votings</legend>
 <%= render partial: "votes_table", locals: { votes: @votes } %>
 <br>
-<%= link_to 'New Vote', new_vote_path %>
+<%= link_to(new_vote_path) do %>
+  <%= icon('plus-circle') %> New Voting
+<%end%> 

@@ -12,8 +12,14 @@
     <%end%>
     <%= @vote.status %>
   </span>
-  <span class="badge"><%= "#{@vote.voting_forms.count} forms" %></span>
-  <span class="badge"><%= "#{@vote.candidates.count} candidates" %></span>
+  <span class="badge">
+    <%= icon('qrcode')%>
+    <%= "#{@vote.voting_forms.count} forms" %>
+  </span>
+  <span class="badge">
+    <%= icon('user-circle-o')%>
+    <%= "#{@vote.candidates.count} candidates" %>
+  </span>
 </legend>
 <%= link_to({ controller: :votes, action: :show, format: :pdf }) do%>
   <%= icon('file-pdf-o')%> PDF
@@ -23,7 +29,3 @@
 <% if @vote.has_ended? %>
   <%= render partial: "results", locals: { candidates: @vote.candidates } %>
 <% end %>
-
-<%= link_to(votes_path) do %>
-  <%= icon('arrow-left')%> Back to Votings
-<%end%>
