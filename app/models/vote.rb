@@ -9,7 +9,7 @@ class Vote < ApplicationRecord
   validates :voting_form_count, presence: true
 
   validates_numericality_of :candidate_count, on: :create, greater_than: 1, less_than_or_equal_to: 20
-  validates_numericality_of :voting_form_count, on: :create, greater_than: 1, less_than_or_equal_to: 20
+  validates_numericality_of :voting_form_count, on: :create, greater_than: 1, less_than_or_equal_to: 200
 
   after_create :create_voting_forms_and_candidates
 
