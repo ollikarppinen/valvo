@@ -1,5 +1,7 @@
-@import "bootstrap-sprockets";
-@import "bootswatch/_variables.scss";
-@import "bootstrap";
-@import "bootswatch/_bootswatch.scss";
-@import "custom.scss"
+@import 'bootstrap-sprockets';
+@import 'bootswatch/variables';
+@import 'bootstrap';
+@import 'bootswatch/bootswatch';
+@import 'custom';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';

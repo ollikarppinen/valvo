@@ -2,13 +2,28 @@
 
 <legend>
   Voting
-  <span class="badge badge-info"><%= @vote.status %></span>
+  <span class="badge badge-info">
+    <% if @vote.status == 'Unstarted'%>
+      <%= icon('hourglass-start')%>
+    <% elsif @vote.status == 'Ongoing'%>
+      <%= icon('hourglass-half')%>
+    <% else %>
+      <%= icon('hourglass-end')%>
+    <%end%>
+    <%= @vote.status %>
+  </span>
   <span class="badge"><%= "#{@vote.voting_forms.count} forms" %></span>
   <span class="badge"><%= "#{@vote.candidates.count} candidates" %></span>
 </legend>
-<p><%= link_to 'PDF', { controller: :votes, action: :show, format: :pdf }%></p>
+<%= link_to({ controller: :votes, action: :show, format: :pdf }) do%>
+  <%= icon('file-pdf-o')%> PDF
+<%end%>
+<br/>
+<br/>
 <% if @vote.has_ended? %>
   <%= render partial: "results", locals: { candidates: @vote.candidates } %>
 <% end %>
 
-<%= link_to 'Back', votes_path %>
+<%= link_to(votes_path) do %>
+  <%= icon('arrow-left')%> Back to Votings
+<%end%>
