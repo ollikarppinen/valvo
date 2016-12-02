@@ -8,9 +8,22 @@
   <br/>
   <div class="container row">
     <%= link_to({ controller: :votes, action: :new }, class: "btn btn-primary btn-lg") do%>
-      Paper Voting <%= icon('info-circle')%>
+      PaperVoting
+      <span href="#" data-toggle="tooltip" data-placement="top" title="Vote with paper forms. Voters can validate their vote.">
+        <%= icon('info-circle')%>
+      </span>
     <% end%>
-    <button type="button" class="btn btn-disabled btn-lg">Internet voting <%= icon('info-circle')%></button>
-    <button type="button" class="btn btn-disabled btn-lg">Voting machines <%= icon('info-circle')%></button>
+    <a href="#" class="btn btn-disabled btn-default btn-lg">
+      InternetVoting
+      <span href="#" data-toggle="tooltip" data-placement="top" title="Internet voting - work in progress">
+        <%= icon('info-circle')%>
+      </span>
+    </a>
+    <a href="#" class="btn btn-disabled btn-default btn-lg">
+      PaperVoting
+      <span href="#" data-toggle="tooltip" data-placement="top" title="Voting machines - work in progress">
+        <%= icon('info-circle')%>
+      </span>
+    </a>
   </div>
 </div>

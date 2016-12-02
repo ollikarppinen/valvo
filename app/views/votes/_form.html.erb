@@ -14,11 +14,15 @@
       <% end %>
 
       <div class="field">
-        <%= f.label :How_many_voters? %><br>
+        <%= icon('file') %>
+        <%= f.label :How_many_voters? %>
+        <br>
         <%= f.number_field :voting_form_count, value: 2 %>
       </div>
       <div class="field">
-        <%= f.label :How_many_candidates? %><br>
+        <%= icon('users') %>
+        <%= f.label :How_many_candidates? %>
+        <br>
         <%= f.number_field :candidate_count, value: 2 %>
       </div>
       <br>
