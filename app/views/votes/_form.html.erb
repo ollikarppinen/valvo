@@ -1,6 +1,6 @@
 <%= form_for(vote, html: { class: "form-horizontal" }) do |f| %>
   <fieldset>
-    <legend>New vote</legend>
+    <legend class="lead">New vote</legend>
       <% if vote.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
@@ -13,19 +13,48 @@
         </div>
       <% end %>
 
-      <div class="field">
-        <%= f.label :How_many_voters? %>
-        <%= icon('info-circle') %>
-        <br>
-        <%= icon('file') %>
-        <%= f.number_field :voting_form_count, value: 2 %>
+      <div class="input-group col-sm-6">
+        <span class="input-group-addon"><%= icon('font')%></span>
+        <input type="text" class="form-control" name="title" placeholder="Title">
+        <span class="input-group-addon"><%= icon('info-circle')%></span>
       </div>
-      <div class="field">
-        <%= f.label :How_many_candidates? %>
-        <%= icon('info-circle') %>
-        <br>
-        <%= icon('users') %>
-        <%= f.number_field :candidate_count, value: 2 %>
+      </br>
+
+      <div class="input-group col-sm-6">
+        <span class="input-group-addon"><%= icon('users')%></span>
+        <%= f.number_field :voting_form_count, value: 2, class: 'form-control' %>
+        <span class="input-group-addon">How many voters?</span>
+      </div>
+      <br/>
+
+      <div class="input-group col-sm-6">
+        <span class="input-group-addon"><%= icon('file')%></span>
+        <%= f.number_field :candidate_count, value: 2, class: 'form-control' %>
+        <span class="input-group-addon">How many candidates?</span>
+      </div>
+      <br/>
+
+      <div class="control-group">
+        <%= f.label :voting_system, class: 'lead' %>
+        <br/>
+        <label class="radio-inline">
+          <input type="radio" name="systemradio" checked>first-past-the-post <%= icon('info-circle') %>
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="systemradio" disabled>ranked-choice voting <%= icon('info-circle') %>
+        </label>
+      </div>
+      <br>
+
+      <div class="control-group">
+        <%= f.label :privacy, class: 'lead' %>
+        <br/>
+        <label class="radio-inline">
+          <input type="radio" name="privacyradio" checked>public <%= icon('info-circle') %>
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="privacyradio" disabled>private <%= icon('info-circle') %>
+        </label>
       </div>
       <br>
       <div class="actions">
