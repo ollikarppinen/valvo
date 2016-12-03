@@ -16,6 +16,8 @@
 //= require_tree .
 //= require bootstrap-sprockets
 
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
+$().ready(function(){
+  $('[data-toggle="tooltip"]').tooltip({
+    trigger : 'hover'
+  });
 });

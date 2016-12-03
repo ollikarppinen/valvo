@@ -35,25 +35,25 @@
       <br/>
 
       <div class="control-group">
-        <%= f.label :voting_system, class: 'lead' %>
+        <label class="lead">VotingSystem <%= icon('info-circle')%></label>
         <br/>
         <label class="radio-inline">
-          <input type="radio" name="systemradio" checked>first-past-the-post <%= icon('info-circle') %>
+          <input type="radio" name="systemradio" checked>first-past-the-post
         </label>
         <label class="radio-inline">
-          <input type="radio" name="systemradio" disabled>ranked-choice voting <%= icon('info-circle') %>
+          <input type="radio" name="systemradio" disabled><light>ranked-choice voting</light>
         </label>
       </div>
       <br>
 
       <div class="control-group">
-        <%= f.label :privacy, class: 'lead' %>
+        <label class="lead">Privacy <%= icon('info-circle')%></label>
         <br/>
         <label class="radio-inline">
-          <input type="radio" name="privacyradio" checked>public <%= icon('info-circle') %>
+          <input type="radio" name="privacyradio" checked>public
         </label>
         <label class="radio-inline">
-          <input type="radio" name="privacyradio" disabled>private <%= icon('info-circle') %>
+          <input type="radio" name="privacyradio" disabled>private
         </label>
       </div>
       <br>
