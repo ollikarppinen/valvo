@@ -12,9 +12,29 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to 'Votings', controller: :votes, action: :index %></li>
+        <li>
+          <%= link_to(controller: :votes, action: :new) do %>
+          <%= icon('plus-circle')%>
+            create voting
+          <%end%>
+        </li>
+        <li class="Votings">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            votings <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <%= link_to(controller: :votes, action: :index) do%>
+                <%= icon('list-ol')%>
+                public
+              <%end%>
+            </li>
+          </ul>
+        </li>
         <li class="About">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">About <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            About <span class="caret"></span>
+          </a>
           <ul class="dropdown-menu" role="menu">
             <li>
               <a href="http://sciprojektivoting.blogspot.fi/" target="_blank" >
