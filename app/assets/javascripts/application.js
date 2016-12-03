@@ -16,12 +16,28 @@
 //= require_tree .
 //= require bootstrap-sprockets
 
+// Tooltip init
+var is_touch_device = ("ontouchstart" in window) || window.DocumentTouch && document instanceof DocumentTouch;
+
 var ready = function () {
-  $('[data-toggle="tooltip"]').tooltip(
-    { placement : 'right', container: 'body' }
-  );
-  $('[data-toggle="tooltip"]').popover();
+  if (is_touch_device) {
+    $('[data-toggle="tooltip"]').popover(
+      { placement : 'auto', container: 'body' }
+    );
+  } else {
+    $('[data-toggle="tooltip"]').tooltip(
+      { placement : 'auto', container: 'body' }
+    );
+  }
 };
 
 $(document).ready(ready);
 $(document).on('turbolinks:load', ready);
+
+// Vote dynamic form
+// $(document).ready(function () {
+//   $('#vote_candidate_count').on('input', function() {
+//     var a = $(this).val(); // get the current value of the input field.
+//     console.log(a);
+//   });
+// });

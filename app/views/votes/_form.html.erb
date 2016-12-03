@@ -17,7 +17,7 @@
         <span class="input-group-addon"><%= icon('font')%></span>
         <%= f.text_field :title, placeholder: 'Title', class: 'form-control'%>
         <span class="input-group-addon">
-          <span href="#" data-toggle="tooltip" data-placement="auto" title="Set a title for the vote. It appears on the voting forms(soonish).">
+          <span href="#" data-toggle="tooltip" data-placement="top" title="Set a title for the vote. It appears on the voting forms(soonish).">
             <%= icon('info-circle')%>
           </span>
         </span>
@@ -25,23 +25,36 @@
       </br>
 
       <div class="input-group col-sm-6">
-        <span class="input-group-addon"><%= icon('users')%></span>
+        <span class="input-group-addon"><%= icon('file')%> How many voters?</span>
         <%= f.number_field :voting_form_count, value: 2, class: 'form-control' %>
-        <span class="input-group-addon">How many voters?</span>
+      </div>
+      <br/>
+
+      <label class="lead">Candidates
+        <span href="#" data-toggle="tooltip" data-placement="top" title="You can specify(soonish) the candidate labels, otherwise they are given generic labels.">
+          <%= icon('info-circle')%>
+        </span>
+      </label>
+      <div class="control-group">
+        <label class="radio-inline">
+          <input type="radio" name="labelradio" checked/> unlabeled
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="labelradio" disabled /> labeled
+        </label>
       </div>
       <br/>
 
       <div class="input-group col-sm-6">
-        <span class="input-group-addon"><%= icon('file')%></span>
+        <span class="input-group-addon"><%= icon('users')%> How many candidates?</span>
         <%= f.number_field :candidate_count, value: 2, class: 'form-control' %>
-        <span class="input-group-addon">How many candidates?</span>
       </div>
       <br/>
 
       <div class="control-group">
         <label class="lead">
           VotingSystem
-          <span href="#" data-toggle="tooltip" data-placement="auto" title="What rules the casting, counting and aggregating of the votes follow.">
+          <span href="#" data-toggle="tooltip" data-placement="top" title="What rules the casting, counting and aggregating of the votes follow.">
             <%= icon('info-circle')%>
           </span>
         </label>
@@ -57,7 +70,7 @@
 
       <label class="lead">
         Visibility
-        <span href="#" data-toggle="tooltip" data-placement="auto" title="Public votings are visible for everyone.">
+        <span href="#" data-toggle="tooltip" data-placement="top" title="Public votings are visible for everyone.">
           <%= icon('info-circle')%>
         </span>
       </label>
@@ -71,22 +84,8 @@
           private
         </label>
       </div>
-      <br>
+      <br/>
 
-      <label class="lead">Candidates
-        <span href="#" data-toggle="tooltip" data-placement="auto" title="You can specify(soonish) the candidate labels, otherwise they are given generic labels.">
-          <%= icon('info-circle')%>
-        </span>
-      </label>
-      <div class="control-group">
-        <label class="radio-inline">
-          <input type="radio" name="labelradio" checked/> unlabeled
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="labelradio" disabled /> labeled
-        </label>
-      </div>
-      <br>
       <div class="actions">
         <%= f.submit 'Create', :class => 'btn btn-primary' %>
       </div>
