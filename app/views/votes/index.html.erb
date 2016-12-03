@@ -1,7 +1,9 @@
-<%= render partial: "shared/notice", locals: { notice: notice } %>
-<legend>Votings</legend>
-<%= render partial: "votes_table", locals: { votes: @votes } %>
 <br>
+<%= render partial: "shared/notice", locals: { notice: notice } %>
+<legend class="lead">
+  Votings
+</legend>
+<%= render partial: "votes_table", locals: { votes: @votes } %>
 <%= link_to(new_vote_path) do %>
   <%= icon('plus-circle') %> New Voting
-<%end%> 
+<%end%>

@@ -60,9 +60,8 @@ class VotesController < ApplicationController
       @vote = Vote.find(params[:id])
     end
 
-
     def vote_params
-      params.require(:vote).permit(:candidate_count, :voting_form_count)
+      params.require(:vote).permit(:candidate_count, :voting_form_count, :title)
     end
 
     def render_pdf

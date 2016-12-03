@@ -7,6 +7,7 @@
       <th>Created</th>
       <th>Forms</th>
       <th>Candidates</th>
+      <th>Title</th>
     </tr>
   </thead>
 
@@ -19,6 +20,7 @@
         <td><%= time_ago_in_words(vote.created_at) %> ago</td>
         <td><%= vote.voting_forms.count %></td>
         <td><%= vote.candidates.count %></td>
+        <td><%= vote.title %></td>
       </tr>
     <% end %>
   </tbody>
