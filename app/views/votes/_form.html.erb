@@ -16,7 +16,11 @@
       <div class="input-group col-sm-6">
         <span class="input-group-addon"><%= icon('font')%></span>
         <%= f.text_field :title, placeholder: 'Title', class: 'form-control'%>
-        <span class="input-group-addon"><%= icon('info-circle')%></span>
+        <span class="input-group-addon">
+          <span href="#" data-toggle="tooltip" data-placement="auto" title="Set a title for the vote. It appears on the voting forms(soonish).">
+            <%= icon('info-circle')%>
+          </span>
+        </span>
       </div>
       </br>
 
@@ -35,7 +39,12 @@
       <br/>
 
       <div class="control-group">
-        <label class="lead">VotingSystem <%= icon('info-circle')%></label>
+        <label class="lead">
+          VotingSystem
+          <span href="#" data-toggle="tooltip" data-placement="auto" title="What rules the casting, counting and aggregating of the votes follow.">
+            <%= icon('info-circle')%>
+          </span>
+        </label>
         <br/>
         <label class="radio-inline">
           <input type="radio" name="systemradio" checked>first-past-the-post
@@ -46,7 +55,12 @@
       </div>
       <br>
 
-      <label class="lead">Visibility <%= icon('info-circle')%></label>
+      <label class="lead">
+        Visibility
+        <span href="#" data-toggle="tooltip" data-placement="auto" title="Public votings are visible for everyone.">
+          <%= icon('info-circle')%>
+        </span>
+      </label>
       <div class="control-group">
         <label class="radio-inline">
           <%= f.radio_button(:private, false, as: :radio, value: true, checked: true) %>
@@ -55,6 +69,21 @@
         <label class="radio-inline">
           <%= f.radio_button :private, true, as: :radio, value: false %>
           private
+        </label>
+      </div>
+      <br>
+
+      <label class="lead">Candidates
+        <span href="#" data-toggle="tooltip" data-placement="auto" title="You can specify(soonish) the candidate labels, otherwise they are given generic labels.">
+          <%= icon('info-circle')%>
+        </span>
+      </label>
+      <div class="control-group">
+        <label class="radio-inline">
+          <input type="radio" name="labelradio" checked/> unlabeled
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="labelradio" disabled /> labeled
         </label>
       </div>
       <br>
