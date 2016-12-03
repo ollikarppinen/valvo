@@ -16,7 +16,6 @@
       <div class="input-group col-sm-6">
         <span class="input-group-addon"><%= icon('font')%></span>
         <%= f.text_field :title, placeholder: 'Title', class: 'form-control'%>
-        <!--input type="text" class="form-control" name="title" placeholder="Title"-->
         <span class="input-group-addon"><%= icon('info-circle')%></span>
       </div>
       </br>
@@ -48,13 +47,13 @@
       <br>
 
       <div class="control-group">
-        <label class="lead">Privacy <%= icon('info-circle')%></label>
-        <br/>
         <label class="radio-inline">
-          <input type="radio" name="privacyradio" checked>public
+          <%= f.radio_button(:private, false, as: :radio, value: true, checked: true) %>
+          public
         </label>
         <label class="radio-inline">
-          <input type="radio" name="privacyradio" disabled>private
+          <%= f.radio_button :private, true, as: :radio, value: false %>
+          private
         </label>
       </div>
       <br>

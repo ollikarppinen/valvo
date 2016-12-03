@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161203123442) do
+ActiveRecord::Schema.define(version: 20161203131727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20161203123442) do
     t.uuid     "start_uuid",        default: -> { "uuid_generate_v4()" }
     t.uuid     "end_uuid",          default: -> { "uuid_generate_v4()" }
     t.string   "title"
+    t.boolean  "private"
   end
 
   create_table "voting_decisions", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|

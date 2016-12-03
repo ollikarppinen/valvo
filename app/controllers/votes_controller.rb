@@ -6,7 +6,7 @@ class VotesController < ApplicationController
   # GET /votes
   # GET /votes.json
   def index
-    @votes = Vote.all
+    @votes = Vote.all.select { |v| !v.private }
   end
 
   # GET /votes/1
@@ -61,7 +61,7 @@ class VotesController < ApplicationController
     end
 
     def vote_params
-      params.require(:vote).permit(:candidate_count, :voting_form_count, :title)
+      params.require(:vote).permit(:candidate_count, :voting_form_count, :title, :private)
     end
 
     def render_pdf

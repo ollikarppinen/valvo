@@ -25,6 +25,7 @@
   <div class="lead">Name: <%= @vote.title%></div>
 <%end%>
 <div class="lead">Created <%= time_ago_in_words(@vote.created_at) %> ago</div>
+<div class="lead">Public: <%= !@vote.private %></div>
 <%= link_to({ controller: :votes, action: :show, format: :pdf }) do%>
   <%= icon('file-pdf-o')%> PDF
 <%end%>
