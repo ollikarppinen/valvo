@@ -13,12 +13,9 @@ Vote status: <%= @voting_decision.vote.status %>
   You have not voted yet
 <% end %>
 <br />
-You voted for <%= @voting_decision.candidate_number %>
-<br />
-<% if @voting_decision.candidate %>
-  Candidate: <%= @voting_decision.candidate.name %>
-<% end %>
 
 <% if @voting_decision.vote.ongoing? %>
+  You can change your vote while vote is ongoing
+  <br />
   <%= render 'form', voting_decision: @voting_decision %>
 <% end %>
