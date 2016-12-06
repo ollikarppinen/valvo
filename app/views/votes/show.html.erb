@@ -31,6 +31,6 @@
 <%end%>
 <br/>
 <br/>
-<% if @vote.has_ended? %>
+<% if @vote.ended? %>
   <%= render partial: "results", locals: { candidates: @vote.candidates } %>
 <% end %>

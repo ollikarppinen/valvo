@@ -1,8 +1,8 @@
 <%= render partial: "shared/notice", locals: { notice: notice } %>
 
-<% if @voting_form.vote.is_ongoing? %>
+<% if @voting_form.vote.ongoing? %>
   <%= render partial: "ongoing", locals: { voting_form: @voting_form } %>
-<% elsif @voting_form.vote.has_ended? %>
+<% elsif @voting_form.vote.ended? %>
   <%= render partial: "ended", locals: { voting_form: @voting_form } %>
 <% else %>
   <%= render partial: "unstarted" %>

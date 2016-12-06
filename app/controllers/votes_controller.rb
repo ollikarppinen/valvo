@@ -43,10 +43,10 @@ class VotesController < ApplicationController
 
   def update
     @uuid = params[:uuid]
-    if @uuid == @vote.start_uuid && !@vote.has_started?
+    if @uuid == @vote.start_uuid && !@vote.started?
       @vote.voting_start = VotingStart.create(vote_id: @vote.id)
       @notice = 'Voting was successfully started.'
-    elsif @uuid == @vote.end_uuid && !@vote.has_ended?
+    elsif @uuid == @vote.end_uuid && !@vote.ended?
       @vote.voting_end = VotingEnd.create(vote_id: @vote.id)
       @notice = 'Voting was successfully ended.'
     end

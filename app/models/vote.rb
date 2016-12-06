@@ -13,27 +13,28 @@ class Vote < ApplicationRecord
 
   after_create :create_voting_forms_and_candidates
 
-  default_scope  { order(:created_at => :desc) }
+  default_scope { order(created_at: :desc) }
 
-  def has_started?
-    not self.voting_start.nil?
+  def started?
+    !voting_start.nil?
   end
 
-  def has_ended?
-    not self.voting_end.nil?
+  def ended?
+    !voting_end.nil?
   end
 
-  def is_ongoing?
-    self.has_started? && !self.has_ended?
+  def ongoing?
+    started? && !ended?
   end
 
   def status
-    return "Ended" if self.has_ended?
-    return "Ongoing" if self.is_ongoing?
-    "Unstarted"
+    return 'Ended' if ended?
+    return 'Ongoing' if ongoing?
+    'Unstarted'
   end
 
   private
+  
     def create_voting_forms_and_candidates
       self.candidate_count.times do |i|
         @candidate = self.candidates.new
@@ -44,6 +45,9 @@ class Vote < ApplicationRecord
         @form = self.voting_forms.new
         @form.shuffle = [*0..self.candidate_count - 1].shuffle
         @form.save
+        @decision = VotingDecision.new
+        @decision.voting_form = @form
+        @decision.save
       end
     end
 end

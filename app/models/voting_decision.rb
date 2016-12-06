@@ -5,4 +5,11 @@ class VotingDecision < ApplicationRecord
   has_one :vote, through: :voting_form
 
   validates :voting_form, presence: true
+
+  # TODO: Set less_than_to to candidate count
+  validates_numericality_of(
+    :candidate_number,
+    on: :update, greater_than_or_equal_to: -1,
+    less_than_to: 50
+  )
 end

@@ -4,9 +4,9 @@ class Candidate < ApplicationRecord
 
   validates :vote, presence: true
 
-  default_scope  { order(:name => :asc) }
+  default_scope { order(id: :asc) }
 
   def votes
-    self.vote.voting_decisions.select { |x| x.candidate == self }.size
+    vote.voting_decisions.select { |x| x.candidate == self }.size
   end
 end

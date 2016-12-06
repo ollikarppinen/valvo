@@ -9,10 +9,8 @@ class VotingEndsController < ApplicationController
     respond_to do |format|
       if @voting_end.save
         format.html { redirect_to controller: :votes, action: :show, id: @vote.id, notice: 'Voting End was successfully created.' }
-        format.json { render :show, status: :created, location: @voting_end }
       else
         format.html { render :new }
-        format.json { render json: @voting_end.errors, status: :unprocessable_entity }
       end
     end
   end

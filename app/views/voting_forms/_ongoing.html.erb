@@ -1,7 +1,7 @@
-<% if voting_form.voting_decision.nil? %>
-  <h1>You can vote</h1>
-  <%= render 'form', voting_form_id: voting_form.id %>
-<% else %>
-  <h1>You have voted</h1>
-  <p>You can view voting results here after voting has ended</p>
+<legend>You can vote</legend>
+  <% if @voting_form.voted? %>
+    You have voted <%= time_ago_in_words(@voting_form.voting_decision.updated_at) %> ago
+    You voted for <%= @voting_form.voting_decision.candidate_number %>
+  <% else %>
+  You have not voted yet
 <% end %>

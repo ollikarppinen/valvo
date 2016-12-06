@@ -1,10 +1,17 @@
-<div class="voting-receipt">
-  <h1>Vote</h1>
-  <%= render partial: "qr_code", locals: { url:
-    url_for(controller: 'voting_forms', action: :show, id: form.id, host: request.host_with_port)} %>
-  <div class="circle">
-    <h2 class="label">
-      no.
-    </h2>
+<div class="voting-form-right-half">
+  <div class="voting-form-vote">
+    <h1>Vote</h1>
+    <%= render partial: "qr_code", locals: { url:
+      url_for(controller: 'voting_decisions', action: :show, id: form.voting_decision.id, host: request.host_with_port)} %>
+    <div class="circle">
+      <h2 class="label">
+        no.
+      </h2>
+    </div>
+  </div>
+  <div class="voting-form-receipt">
+    <h1>Receipt</h1>
+    <%= render partial: "qr_code", locals: { url:
+      url_for(controller: 'voting_forms', action: :show, id: form.id, host: request.host_with_port)} %>
   </div>
 </div>
