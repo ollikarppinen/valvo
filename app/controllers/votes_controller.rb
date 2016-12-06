@@ -30,7 +30,7 @@ class VotesController < ApplicationController
       if params['candidate-label-radio'] == 'candidate-labeled'
         @vote.create_labeled_candidates(params['candidate-labels'])
       elsif params['candidate-label-radio'] == 'candidate-unlabeled'
-        @vote.create_unlabeled_candidates(params['candidate-count'])
+        @vote.create_unlabeled_candidates(params['candidate-count'].to_i)
       end
       @vote.create_voting_forms
       redirect_to @vote, notice: 'Voting was successfully created.'
