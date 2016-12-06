@@ -4,13 +4,11 @@ class VotesController < ApplicationController
   # caches_action :show, format: :pdf
 
   # GET /votes
-  # GET /votes.json
   def index
     @votes = Vote.all.select { |v| !v.private }
   end
 
   # GET /votes/1
-  # GET /votes/1.json
   def show
     respond_to do |format|
       format.html
@@ -26,18 +24,13 @@ class VotesController < ApplicationController
   end
 
   # POST /votes
-  # POST /votes.json
   def create
     @vote = Vote.new(vote_params)
 
-    respond_to do |format|
-      if @vote.save
-        format.html { redirect_to @vote, notice: 'Voting was successfully created.' }
-        format.json { render :show, status: :created, location: @vote }
-      else
-        format.html { render :new }
-        format.json { render json: @vote.errors, status: :unprocessable_entity }
-      end
+    if @vote.save
+      redirect_to @vote, notice: 'Voting was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -56,15 +49,16 @@ class VotesController < ApplicationController
   end
 
   private
-    def set_vote
-      @vote = Vote.find(params[:id])
-    end
 
-    def vote_params
-      params.require(:vote).permit(:candidate_count, :voting_form_count, :title, :private)
-    end
+  def set_vote
+    @vote = Vote.find(params[:id])
+  end
 
-    def render_pdf
-      render :pdf => "file_name", :template => 'votes/show.pdf.erb'
-    end
+  def vote_params
+    params.require(:vote).permit(:candidate_count, :voting_form_count, :title, :private)
+  end
+
+  def render_pdf
+    render pdf: 'file_name', template: 'votes/show.pdf.erb'
+  end
 end

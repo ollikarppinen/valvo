@@ -5,6 +5,6 @@ class VotingForm < ApplicationRecord
   validates :vote, presence: true
 
   def voted?
-    !voting_decision.candidate_number.empty?
+    !voting_decision.candidate_number.nil?
   end
 end
