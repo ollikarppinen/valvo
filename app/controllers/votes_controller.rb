@@ -26,8 +26,13 @@ class VotesController < ApplicationController
   # POST /votes
   def create
     @vote = Vote.new(vote_params)
-
     if @vote.save
+      if params['candidate-label-radio'] == 'candidate-labeled'
+        @vote.create_labeled_candidates(params['candidate-labels'])
+      elsif params['candidate-label-radio'] == 'candidate-unlabeled'
+        @vote.create_unlabeled_candidates(params['candidate-count'])
+      end
+      @vote.create_voting_forms
       redirect_to @vote, notice: 'Voting was successfully created.'
     else
       render :new
@@ -43,9 +48,8 @@ class VotesController < ApplicationController
       @vote.voting_end = VotingEnd.create(vote_id: @vote.id)
       @notice = 'Voting was successfully ended.'
     end
-    respond_to do |format|
-      format.html { redirect_to @vote, notice: @notice }
-    end
+
+    redirect_to @vote, notice: @notice
   end
 
   private
@@ -55,7 +59,7 @@ class VotesController < ApplicationController
   end
 
   def vote_params
-    params.require(:vote).permit(:candidate_count, :voting_form_count, :title, :private)
+    params.require(:vote).permit(:voting_form_count, :title, :private)
   end
 
   def render_pdf

@@ -1,5 +1,5 @@
 <%= form_for(vote, html: { class: "form-horizontal" }) do |f| %>
-  <fieldset>
+  <div>
     <legend class="lead">New vote</legend>
       <% if vote.errors.any? %>
         <div id="error_explanation">
@@ -37,17 +37,17 @@
       </label>
       <div class="control-group">
         <label class="radio-inline">
-          <input type="radio" name="labelradio" checked/> unlabeled
+          <input type="radio" name="candidate-label-radio" value="candidate-labeled" checked /> labeled
         </label>
         <label class="radio-inline">
-          <input type="radio" name="labelradio" disabled /> labeled
+          <input type="radio" name="candidate-label-radio" value="candidate-unlabeled" /> unlabeled
         </label>
       </div>
-      <br/>
-
-      <div class="input-group col-sm-6">
+      <br />
+      <%= render partial: "candidate_form" %>
+      <div id="candidate-unlabeled" class="input-group col-sm-6" style="display:none">
         <span class="input-group-addon"><%= icon('users')%> How many candidates?</span>
-        <%= f.number_field :candidate_count, value: 2, class: 'form-control' %>
+        <input type="number_field" name="candidate-count" value="2" class="form-control" />
       </div>
       <br/>
 
@@ -89,5 +89,5 @@
       <div class="actions">
         <%= f.submit 'Create', :class => 'btn btn-primary' %>
       </div>
-  </fieldset>
+  </div>
 <% end %>

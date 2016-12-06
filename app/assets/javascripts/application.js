@@ -19,7 +19,7 @@
 // Tooltip init
 var is_touch_device = ("ontouchstart" in window) || window.DocumentTouch && document instanceof DocumentTouch;
 
-var ready = function () {
+var tooltips = function () {
   if (is_touch_device) {
     $('[data-toggle="tooltip"]').popover(
       { placement : 'auto', container: 'body' }
@@ -31,13 +31,36 @@ var ready = function () {
   }
 };
 
-$(document).ready(ready);
-$(document).on('turbolinks:load', ready);
+$(document).ready(tooltips);
+$(document).on('turbolinks:load', tooltips);
 
-// Vote dynamic form
-// $(document).ready(function () {
-//   $('#vote_candidate_count').on('input', function() {
-//     var a = $(this).val(); // get the current value of the input field.
-//     console.log(a);
-//   });
-// });
+$(function() {
+  $(document).on('click', '.btn-add-candidate', function(e) {
+    e.preventDefault();
+    var controlForm = $('#candidate-labeled'),
+        currentEntry = $(this).parents('.candidate-entry:first'),
+        newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+    newEntry.find('input').val('');
+    controlForm.find('.candidate-entry:not(:last) .btn-add-candidate')
+        .removeClass('btn-add-candidate').addClass('btn-remove-candidate')
+        .removeClass('btn-success').addClass('btn-danger')
+        .html('<span class="glyphicon glyphicon-minus"></span>');
+  }).on('click', '.btn-remove-candidate', function(e) {
+    $(this).parents('.candidate-entry:first').remove();
+    e.preventDefault();
+    return false;
+  });
+
+  $(document).on('change', 'input[type=radio][name=candidate-label-radio]', function(e) {
+    // first: hide all the divs
+    $('#candidate-labeled').css("display","none");
+    $('#candidate-unlabeled').css("display","none");
+    //
+    // // then get the div ID to show (i stored it in the "value" of the radio button
+    var fieldToShow = $(this).val();
+    console.log(fieldToShow);
+    // // now use jQuery selector and change the display setting of that field
+    $("#" + fieldToShow).css("display","");
+  });
+});
